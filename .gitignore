@@ -1,0 +1,42 @@
+# Data files (large CSV/pickle files should not be committed)
+data/raw/*.csv
+data/processed/*.csv
+data/raw/*.pkl
+data/processed/*.pkl
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# IDE and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Logs
+*.log
+
+# Model files (can be large)
+*.pkl
+*.joblib
+models/*.pkl
+models/*.joblib

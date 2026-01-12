@@ -1,0 +1,3 @@
+# This file ensures the data/raw folder is tracked by Git
+# Place your malicious_urls.csv file here after downloading from Kaggle
+# Download from: https://www.kaggle.com/datasets/sid321axn/malicious-urls-dataset
