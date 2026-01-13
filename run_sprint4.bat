@@ -24,10 +24,11 @@ echo [3/3] Git add + commit + push (scripts + PNGs)...
 git status
 
 REM Stage Sprint 4 code + plots (CSV excluded by default)
-git add "src\features\lexical_features.py" ^
+git add git add "src\features\lexical_features.py" ^
         "src\features\build_features_sprint4.py" ^
         "src\features\plot_features_sprint4.py" ^
         "run_sprint4.bat" ^
+        "data\processed\features_sprint4.csv" ^
         "data\processed\04_feature_distributions.png" ^
         "data\processed\05_feature_correlation.png"
 
