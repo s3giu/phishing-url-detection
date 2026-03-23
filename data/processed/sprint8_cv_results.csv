@@ -1,0 +1,4 @@
+Model,CV_Accuracy_Mean,CV_Accuracy_Std,CV_F1_Mean,CV_F1_Std,CV_FPR_Mean,CV_FPR_Std,CV_Recall_Mean
+Logistic Regression,0.7582,0.0019,0.7497,0.0024,0.2079,0.0014,0.7243
+Random Forest,0.9195,0.0017,0.9198,0.0017,0.0844,0.0034,0.9234
+SVM (LinearSVC),0.7581,0.0019,0.7487,0.0024,0.2045,0.0014,0.7207

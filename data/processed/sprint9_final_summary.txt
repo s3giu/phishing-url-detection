@@ -1,0 +1,37 @@
+============================================================
+SPRINT 9: FINAL MODEL COMPARISON SUMMARY
+CMP600 – Dissertation | Sergiu Ionut Pascaru
+============================================================
+
+Dataset      : Malicious URLs (Siddhartha, 2024)
+Total rows   : 641,053
+Train / Test : 80% / 20% (stratified, seed=42)
+Test set     : 128,211 URLs
+
+────────────────────────────────────────────────────────────
+Model                      Accuracy       F1      FPR      AUC
+────────────────────────────────────────────────────────────
+Logistic Regression          0.7894   0.6125   0.0669   0.8241
+Random Forest                0.9403   0.9120   0.0545   0.9855
+SVM (LinearSVC)              0.7843   0.6056   0.0734   0.8286
+────────────────────────────────────────────────────────────
+
+KEY FINDINGS
+  Best F1-Score  : Random Forest
+  Best ROC AUC   : Random Forest
+  Lowest FPR     : Random Forest  <- best usability
+
+INTERPRETATION
+  Random Forest significantly outperforms the linear models
+  (LR and SVM) on all metrics, confirming that the relationship
+  between lexical URL features and maliciousness is non-linear.
+  The high AUC (>0.98) demonstrates strong discriminative power.
+  The FPR is the key usability metric: a lower FPR means fewer
+  legitimate URLs are incorrectly blocked, which is critical for
+  real-time, client-side deployment.
+
+NEXT STEPS (Sprint 10+)
+  - Draft Methodology and Introduction chapters
+  - Draft Literature Review and Results chapters
+  - Draft Discussion and Conclusion
+  - Final proofreading and submission

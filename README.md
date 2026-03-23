@@ -96,11 +96,12 @@ Each sprint follows the same workflow:
 | 2 | Data Understanding | ✅ Complete | EDA, dataset exploration (651k URLs) |
 | 3 | Data Preparation | ✅ Complete | Data cleaning, deduplication, label binarization |
 | 4 | Data Preparation | ✅ Complete | Lexical feature engineering (10 features, 641,053 rows) |
-| 5 | Modelling | 🔄 In Progress | Baseline Logistic Regression – data split, training, Confusion Matrix |
-| 6 | Modelling | ⏳ Pending | Random Forest (ensemble tuning) |
-| 7 | Modelling | ⏳ Pending | SVM (kernel optimisation) |
-| 8-9 | Evaluation | ⏳ Pending | Cross-validation, ROC curves, model comparison |
-| 10-14 | Deployment | ⏳ Pending | Documentation, submission |
+| 5 | Modelling | ✅ Complete | Baseline Logistic Regression – Accuracy: 78.94%, FPR: 6.69%, AUC: 0.8241 |
+| 6 | Modelling | ✅ Complete | Random Forest – Accuracy: 94.03%, FPR: 5.45%, AUC: 0.9855 |
+| 7 | Modelling | ✅ Complete | SVM (LinearSVC) – Accuracy: 78.43%, FPR: 7.34%, AUC: 0.8286 |
+| 8 | Evaluation | ✅ Complete | 5-fold cross-validation (n=100k subsample), ANOVA feature selection |
+| 9 | Evaluation | ✅ Complete | Combined ROC curves, model comparison heatmap, final summary report |
+| 10-14 | Deployment | 🔄 In Progress | Dissertation write-up, documentation, submission |
 
 ## References
 
@@ -111,4 +112,14 @@ Each sprint follows the same workflow:
 ---
 
 **Last Updated:** March 25, 2026  
-**Status:** Sprint 5 In Progress (Sprints 1–4 Complete)
+**Status:** Sprints 1–9 Complete | Sprint 10 (Deployment / Write-up) In Progress
+
+## Sprint 9 Results Summary
+
+| Model | Accuracy | F1-Score | FPR | ROC AUC |
+|---|---|---|---|---|
+| Logistic Regression (baseline) | 78.94% | 0.6125 | 6.69% | 0.8241 |
+| **Random Forest** | **94.03%** | **0.9120** | **5.45%** | **0.9855** |
+| SVM (LinearSVC) | 78.43% | 0.6056 | 7.34% | 0.8286 |
+
+**Winner: Random Forest** — best on all four metrics. The non-linear ensemble model confirms that lexical URL features have complex, non-linear relationships with maliciousness.
