@@ -1,0 +1,32 @@
+============================================================
+SPRINT 5: LOGISTIC REGRESSION BASELINE RESULTS
+============================================================
+
+Dataset       : data/processed/features_sprint4.csv
+Train/Test    : 80% / 20% (stratified)
+Random State  : 42
+
+── Confusion Matrix ──────────────────────────────────
+  TN (correct benign)    : 79,884
+  FP (benign→malicious)  : 5,728  ← False Positives
+  FN (missed malicious)  : 21,267
+  TP (correct malicious) : 21,332
+
+── Key Metrics ───────────────────────────────────────
+  Accuracy   : 0.7894 (78.94%)
+  Precision  : 0.7883
+  Recall     : 0.5008
+  F1-Score   : 0.6125
+  FPR        : 0.0669 (6.69%)  ← KEY USABILITY METRIC
+  ROC AUC    : 0.8241
+
+── Classification Report ─────────────────────────────
+               precision    recall  f1-score   support
+
+   Benign (0)       0.79      0.93      0.86     85612
+Malicious (1)       0.79      0.50      0.61     42599
+
+     accuracy                           0.79    128211
+    macro avg       0.79      0.72      0.73    128211
+ weighted avg       0.79      0.79      0.77    128211
+

@@ -93,11 +93,13 @@ Each sprint follows the same workflow:
 | Sprint | Phase | Status | Description |
 |--------|-------|--------|-------------|
 | 1 | Business Understanding | ✅ Complete | Project setup, GitHub, Trello |
-| 2 | Data Understanding | 🔄 In Progress | EDA, dataset exploration |
-| 3 | Data Preparation | ⏳ Pending | Data cleaning, binarization |
-| 4 | Data Preparation | ⏳ Pending | Feature engineering |
-| 5-7 | Modelling | ⏳ Pending | Train classifiers |
-| 8-9 | Evaluation | ⏳ Pending | Model comparison |
+| 2 | Data Understanding | ✅ Complete | EDA, dataset exploration (651k URLs) |
+| 3 | Data Preparation | ✅ Complete | Data cleaning, deduplication, label binarization |
+| 4 | Data Preparation | ✅ Complete | Lexical feature engineering (10 features, 641,053 rows) |
+| 5 | Modelling | 🔄 In Progress | Baseline Logistic Regression – data split, training, Confusion Matrix |
+| 6 | Modelling | ⏳ Pending | Random Forest (ensemble tuning) |
+| 7 | Modelling | ⏳ Pending | SVM (kernel optimisation) |
+| 8-9 | Evaluation | ⏳ Pending | Cross-validation, ROC curves, model comparison |
 | 10-14 | Deployment | ⏳ Pending | Documentation, submission |
 
 ## References
@@ -108,5 +110,5 @@ Each sprint follows the same workflow:
 
 ---
 
-**Last Updated:** January 12, 2026  
-**Status:** Sprint 1 Complete
+**Last Updated:** March 25, 2026  
+**Status:** Sprint 5 In Progress (Sprints 1–4 Complete)
