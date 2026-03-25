@@ -21,6 +21,7 @@
 8. [Results Summary](#results-summary)
 9. [Key Findings](#key-findings)
 10. [References](#references)
+11. [Academic Sprint Documentation](#academic-docs)
 
 ---
 
@@ -496,3 +497,13 @@ All 10 features are statistically significant (p < 0.05). The top 3 features (`d
 **Last Updated:** 25 March 2026  
 **GitHub:** https://github.com/s3giu/phishing-url-detection  
 **Trello:** https://trello.com/b/YbG9606p/phishing
+
+---
+
+## Academic Sprint Documentation {#academic-docs}
+
+A full dissertation-level academic justification for every sprint — covering **why** each approach was chosen, **how** it was implemented, and **what purpose** it serves in relation to the research question, CRISP-DM methodology, and assessment brief — is available in:
+
+📄 [`docs/Sprint_Documentation_Academic_Level6.md`](docs/Sprint_Documentation_Academic_Level6.md)
+
+This document is structured to address the Level 6 BSc Computing assessment criteria (LO1–LO5) and provides academic citations for every methodological decision.
