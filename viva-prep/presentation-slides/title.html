@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            display: flex;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #F4F7FB;
+        }
+        .left-panel {
+            width: 52%;
+            background: #0A192F;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.06;
+            background-image:
+                linear-gradient(#4A90D9 1px, transparent 1px),
+                linear-gradient(90deg, #4A90D9 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .left-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 56px;
+        }
+        .module-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: #4A90D9;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+        .accent-line {
+            width: 48px;
+            height: 3px;
+            background: #0056B3;
+            margin-bottom: 28px;
+        }
+        .main-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .main-title span {
+            color: #4A90D9;
+        }
+        .subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            color: #8BA4C0;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        .shield-icon {
+            width: 56px;
+            height: 56px;
+            margin-top: 8px;
+        }
+        .right-panel {
+            width: 48%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 56px;
+            background: #F4F7FB;
+            border-left: 2px solid #C8DEFF;
+        }
+        .viva-badge {
+            display: inline-block;
+            background: #E6F0FA;
+            border: 1px solid #0056B3;
+            color: #0056B3;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            margin-bottom: 36px;
+            font-family: 'DM Mono', monospace;
+        }
+        .detail-row {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 22px;
+        }
+        .detail-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'DM Mono', monospace;
+            margin-bottom: 4px;
+        }
+        .detail-value {
+            font-size: 17px;
+            font-weight: 600;
+            color: #0A192F;
+        }
+        .detail-value.large {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: #C8DEFF;
+            margin: 8px 0 22px 0;
+        }
+        .bottom-row {
+            display: flex;
+            gap: 40px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <!-- Left Panel -->
+    <div class="left-panel">
+        <div class="grid-bg"></div>
+        <div class="left-content">
+            <div class="module-tag">CMP600 &nbsp;·&nbsp; Dissertation</div>
+            <div class="accent-line"></div>
+            <div class="main-title">
+                <span>PhishGuard</span><br>
+                A Machine Learning Approach to Real-Time Phishing URL Detection
+            </div>
+            <div class="subtitle">
+                Viva Voce Presentation &nbsp;·&nbsp; June 2026
+            </div>
+            <!-- Shield SVG -->
+            <svg class="shield-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 4L8 12V28C8 39.05 16.85 49.38 28 52C39.15 49.38 48 39.05 48 28V12L28 4Z" fill="#0056B3" opacity="0.3"/>
+                <path d="M28 4L8 12V28C8 39.05 16.85 49.38 28 52C39.15 49.38 48 39.05 48 28V12L28 4Z" stroke="#4A90D9" stroke-width="2"/>
+                <path d="M21 28L26 33L35 23" stroke="#4A90D9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+        <div class="viva-badge">Viva Voce — Oral Examination</div>
+
+        <div class="detail-row">
+            <div class="detail-label">Student</div>
+            <div class="detail-value large">Sergiu Ionut Pascaru</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="detail-row">
+            <div class="detail-label">Programme</div>
+            <div class="detail-value">BSc (Hons) Computing [Top-up]</div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-label">Institution</div>
+            <div class="detail-value">Elizabeth School of London</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="bottom-row">
+            <div class="detail-row" style="margin-bottom:0">
+                <div class="detail-label">Module</div>
+                <div class="detail-value">CMP600</div>
+            </div>
+            <div class="detail-row" style="margin-bottom:0">
+                <div class="detail-label">Supervisor</div>
+                <div class="detail-value">Oti Edema</div>
+            </div>
+            <div class="detail-row" style="margin-bottom:0">
+                <div class="detail-label">Date</div>
+                <div class="detail-value">June 2026</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

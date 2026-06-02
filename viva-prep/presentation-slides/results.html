@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #F4F7FB;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-band {
+            background: #0A192F;
+            padding: 28px 56px 24px 56px;
+            min-height: 100px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .slide-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .slide-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+        .title-accent { color: #4A90D9; }
+        .body {
+            flex: 1;
+            display: flex;
+            gap: 0;
+        }
+        .left-col {
+            width: 62%;
+            padding: 28px 36px 28px 56px;
+            border-right: 2px solid #C8DEFF;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .right-col {
+            width: 38%;
+            padding: 28px 56px 28px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        /* Performance Table */
+        .perf-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #C8DEFF;
+        }
+        .perf-table th {
+            background: #0A192F;
+            color: #8BA4C0;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 500;
+            border-right: 1px solid #1E3A5F;
+        }
+        .perf-table th:last-child { border-right: none; }
+        .perf-table td {
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+            padding: 12px 12px;
+            border-right: 1px solid #C8DEFF;
+            border-top: 1px solid #C8DEFF;
+            color: #1A2B4A;
+        }
+        .perf-table td:last-child { border-right: none; }
+        .perf-table td.model-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #0A192F;
+        }
+        .row-alt { background: #EEF4FB; }
+        .row-winner { background: #0A192F; }
+        .row-winner td { color: #C8DEFF; border-right-color: #1E3A5F; border-top-color: #1E3A5F; }
+        .row-winner td.model-name { color: #4A90D9; font-weight: 800; }
+        .row-winner td.best-val { color: #FFFFFF; font-weight: 700; }
+        .best-val { color: #0056B3; font-weight: 700; }
+        /* CV Section */
+        .cv-box {
+            background: #E6F0FA;
+            border-top: 3px solid #0056B3;
+            padding: 14px 16px;
+        }
+        .cv-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .cv-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .cv-model {
+            font-size: 13px;
+            font-weight: 600;
+            color: #0A192F;
+        }
+        .cv-val {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: #1A2B4A;
+        }
+        .cv-val.best { color: #0056B3; font-weight: 700; }
+        /* Chart */
+        .chart-wrap {
+            height: 280px;
+        }
+        .finding-box {
+            background: #0A192F;
+            padding: 14px 16px;
+        }
+        .finding-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .finding-text {
+            font-size: 13px;
+            color: #C8DEFF;
+            line-height: 1.55;
+        }
+        .finding-text strong { color: #FFFFFF; }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="header-band">
+        <div>
+            <div class="slide-number">06 / 10</div>
+            <div class="slide-title">Results — <span class="title-accent">Model Performance</span></div>
+        </div>
+    </div>
+
+    <div class="body">
+        <!-- Left: Table + CV -->
+        <div class="left-col">
+            <div class="section-label">Test Set Performance — 128,211 URLs</div>
+
+            <table class="perf-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Accuracy</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>F1-Score</th>
+                        <th>FPR</th>
+                        <th>ROC AUC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row-alt">
+                        <td class="model-name">Logistic Regression</td>
+                        <td>78.94%</td>
+                        <td>0.7883</td>
+                        <td>0.5008</td>
+                        <td>0.6125</td>
+                        <td>6.69%</td>
+                        <td>0.8241</td>
+                    </tr>
+                    <tr class="row-winner">
+                        <td class="model-name">Random Forest ★</td>
+                        <td class="best-val">94.03%</td>
+                        <td class="best-val">0.8946</td>
+                        <td class="best-val">0.9300</td>
+                        <td class="best-val">0.9120</td>
+                        <td class="best-val">5.45%</td>
+                        <td class="best-val">0.9855</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name">SVM (LinearSVC)</td>
+                        <td>78.43%</td>
+                        <td>0.7716</td>
+                        <td>0.4984</td>
+                        <td>0.6056</td>
+                        <td>7.34%</td>
+                        <td>0.8286</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cv-box">
+                <div class="cv-label">5-Fold Cross-Validation (100,000 rows) — Stability Check</div>
+                <div class="cv-row">
+                    <div class="cv-model">Logistic Regression</div>
+                    <div class="cv-val">75.82% ± 0.19% &nbsp;|&nbsp; F1: 0.7497 ± 0.0024</div>
+                </div>
+                <div class="cv-row">
+                    <div class="cv-model">Random Forest</div>
+                    <div class="cv-val best">91.95% ± 0.17% &nbsp;|&nbsp; F1: 0.9198 ± 0.0017 ★</div>
+                </div>
+                <div class="cv-row">
+                    <div class="cv-model">SVM (LinearSVC)</div>
+                    <div class="cv-val">75.81% ± 0.19% &nbsp;|&nbsp; F1: 0.7487 ± 0.0024</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Chart + Finding -->
+        <div class="right-col">
+            <div class="section-label">Accuracy Comparison</div>
+            <div class="chart-wrap">
+                <canvas id="accChart"></canvas>
+            </div>
+
+            <div class="finding-box">
+                <div class="finding-label">Key Finding</div>
+                <div class="finding-text">
+                    Random Forest outperforms linear models by <strong>+15 percentage points</strong> in accuracy and <strong>+0.30 in F1-Score</strong>. Cross-validation confirms this is not overfitting — stability ±0.17%.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const ctx = document.getElementById('accChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Logistic\nRegression', 'Random\nForest', 'SVM\n(LinearSVC)'],
+        datasets: [{
+            label: 'Accuracy (%)',
+            data: [78.94, 94.03, 78.43],
+            backgroundColor: ['#C8DEFF', '#0056B3', '#C8DEFF'],
+            borderColor: ['#0056B3', '#0A192F', '#0056B3'],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: ctx => ctx.parsed.y.toFixed(2) + '%'
+                }
+            }
+        },
+        scales: {
+            y: {
+                min: 70,
+                max: 100,
+                ticks: {
+                    font: { family: 'DM Mono', size: 12 },
+                    color: '#1A2B4A',
+                    callback: v => v + '%'
+                },
+                grid: { color: '#C8DEFF' }
+            },
+            x: {
+                ticks: {
+                    font: { family: 'Space Grotesk', size: 12 },
+                    color: '#1A2B4A'
+                },
+                grid: { display: false }
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>

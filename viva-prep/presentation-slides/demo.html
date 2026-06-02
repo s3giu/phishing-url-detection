@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #F4F7FB;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-band {
+            background: #0A192F;
+            padding: 28px 56px 24px 56px;
+            min-height: 100px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+        .slide-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .slide-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+        .title-accent { color: #4A90D9; }
+        .live-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            color: #0A192F;
+            background: #4A90D9;
+            padding: 6px 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            align-self: center;
+        }
+        .body {
+            flex: 1;
+            display: flex;
+            gap: 0;
+        }
+        .left-col {
+            width: 60%;
+            padding: 16px 40px 16px 56px; /* reduced vertical padding to save height */
+            border-right: 2px solid #C8DEFF;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .right-col {
+            width: 40%;
+            padding: 20px 56px 20px 40px; /* slightly reduced */
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .col-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        /* URL Display */
+        .url-display {
+            background: #0A192F;
+            padding: 12px 16px; /* tightened */
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .url-protocol {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: #4A90D9;
+            min-width: 60px;
+        }
+        .url-text {
+            font-family: 'DM Mono', monospace;
+            font-size: 15px;
+            color: #FFFFFF;
+            font-weight: 500;
+            word-break: break-all;
+        }
+        /* Demo Table */
+        .demo-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #C8DEFF;
+        }
+        .demo-table thead tr {
+            background: #0A192F;
+        }
+        .demo-table thead th {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #8BA4C0;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 12px; /* reduced */
+            text-align: left;
+            font-weight: 500;
+            border-right: 1px solid #1E3A5F;
+        }
+        .demo-table thead th:last-child { border-right: none; }
+        .demo-table tbody td {
+            padding: 10px 12px; /* reduced */
+            font-size: 13px;
+            border-right: 1px solid #C8DEFF;
+            border-top: 1px solid #C8DEFF;
+            vertical-align: top;
+            line-height: 1.35; /* slightly tighter */
+        }
+        .demo-table tbody td:last-child { border-right: none; }
+        .row-safe { background: #E6F0FA; }
+        .row-suspicious { background: #FFF8E6; }
+        .row-malicious { background: #FFF0EE; }
+        .verdict-safe {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: #1B6B3A;
+            background: #D4EDDA;
+            padding: 3px 8px;
+            display: inline-block;
+        }
+        .verdict-suspicious {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: #7B5800;
+            background: #FFF0B3;
+            padding: 3px 8px;
+            display: inline-block;
+        }
+        .verdict-malicious {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: #8B1A1A;
+            background: #FFCDD2;
+            padding: 3px 8px;
+            display: inline-block;
+        }
+        .demo-url {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: #0A192F;
+            word-break: break-all;
+            line-height: 1.4;
+        }
+        .demo-score {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0056B3;
+        }
+        .demo-say {
+            font-size: 12px;
+            color: #3A4B6A;
+            font-style: italic;
+            line-height: 1.4;
+        }
+        /* Right column items */
+        .point-out-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 8px; /* tightened */
+        }
+        .point-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0056B3;
+            min-width: 22px;
+        }
+        .point-text {
+            font-size: 13px;
+            color: #1A2B4A;
+            line-height: 1.45;
+        }
+        .point-text strong { color: #0A192F; font-weight: 700; }
+        .backup-box {
+            background: #0A192F;
+            padding: 12px 16px; /* tightened */
+            margin-top: auto;
+        }
+        .backup-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .backup-text {
+            font-size: 13px;
+            color: #8BA4C0;
+            line-height: 1.45;
+        }
+        .backup-text strong { color: #C8DEFF; }
+        .divider-h {
+            width: 100%;
+            height: 1px;
+            background: #C8DEFF;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="header-band">
+        <div>
+            <div class="slide-number">10 / 10</div>
+            <div class="slide-title"><span class="title-accent">Live Demo</span> — PhishGuard</div>
+        </div>
+        <div class="live-badge">● Live</div>
+    </div>
+
+    <div class="body">
+        <!-- Left: URL + Demo Sequence -->
+        <div class="left-col">
+            <div class="col-label">Application URL</div>
+            <div class="url-display">
+                <div class="url-protocol">https://</div>
+                <div class="url-text">phishguardapp.manus.space</div>
+            </div>
+
+            <div class="col-label">Demo Sequence — Three Test URLs</div>
+            <table class="demo-table">
+                <thead>
+                    <tr>
+                        <th>Verdict</th>
+                        <th>URL to Enter</th>
+                        <th>Score</th>
+                        <th>Say to Examiners</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row-safe">
+                        <td><span class="verdict-safe">SAFE</span></td>
+                        <td><span class="demo-url">https://www.google.com</span></td>
+                        <td><span class="demo-score">~5/100</span></td>
+                        <td><span class="demo-say">Short URL, low entropy, no suspicious characters — all features at low risk</span></td>
+                    </tr>
+                    <tr class="row-suspicious">
+                        <td><span class="verdict-suspicious">SUSPICIOUS</span></td>
+                        <td><span class="demo-url">http://myaccount-update.net/verify</span></td>
+                        <td><span class="demo-score">~50/100</span></td>
+                        <td><span class="demo-say">Hyphenated domain, no HTTPS, path keyword "verify" — medium risk indicators</span></td>
+                    </tr>
+                    <tr class="row-malicious">
+                        <td><span class="verdict-malicious">MALICIOUS</span></td>
+                        <td><span class="demo-url">http://192.168.1.1/paypal/login/secure/verify/account</span></td>
+                        <td><span class="demo-score">100/100</span></td>
+                        <td><span class="demo-say">Raw IP address, 9 slashes, 13 digits, high entropy — all 10 features flagged</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Right: What to Point Out + Backup -->
+        <div class="right-col">
+            <div class="col-label">What to Highlight During Demo</div>
+
+            <div class="point-out-item">
+                <div class="point-num">→</div>
+                <div class="point-text"><strong>Risk Score (0–100)</strong> — colour-coded verdict badge (green / amber / red)</div>
+            </div>
+            <div class="point-out-item">
+                <div class="point-num">→</div>
+                <div class="point-text"><strong>Feature Table</strong> — each of the 10 features shown with its value and risk level</div>
+            </div>
+            <div class="point-out-item">
+                <div class="point-num">→</div>
+                <div class="point-text"><strong>Importance %</strong> — shows which features drove the decision for that specific URL</div>
+            </div>
+            <div class="point-out-item">
+                <div class="point-num">→</div>
+                <div class="point-text"><strong>About the Model</strong> panel — confirms Random Forest, 94.03% accuracy, 641K training URLs</div>
+            </div>
+            <div class="point-out-item">
+                <div class="point-num">→</div>
+                <div class="point-text"><strong>Response time</strong> — analysis completes in under 1 second, demonstrating real-time capability</div>
+            </div>
+
+            <div class="divider-h"></div>
+
+            <div class="backup-box">
+                <div class="backup-label">Backup Plan — If Internet Fails</div>
+                <div class="backup-text">Show <strong>Figures F.1–F.6</strong> from Appendix F of the dissertation — six pre-captured screenshots covering Safe, Suspicious, and Malicious results with full feature tables.</div>
+            </div>
+
+            <div style="background:#E6F0FA; border-top:3px solid #0056B3; padding:12px 16px; margin-top:8px;">
+                <div style="font-family:'DM Mono',monospace;font-size:11px;color:#0056B3;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">GitHub Repository</div>
+                <div style="font-family:'DM Mono',monospace;font-size:12px;color:#0A192F;word-break:break-all;">github.com/s3giu/phishing-url-detection</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

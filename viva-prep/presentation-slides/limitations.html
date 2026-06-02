@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #F4F7FB;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-band {
+            background: #0A192F;
+            padding: 28px 56px 24px 56px;
+            min-height: 100px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .slide-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .slide-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+        .title-accent { color: #4A90D9; }
+        .body {
+            flex: 1;
+            display: flex;
+            gap: 0;
+        }
+        .left-col {
+            width: 50%;
+            padding: 32px 40px 32px 56px;
+            border-right: 2px solid #C8DEFF;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .right-col {
+            width: 50%;
+            padding: 32px 56px 32px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .col-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .col-label.contrib {
+            color: #2E7D32;
+        }
+        .limit-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .limit-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 28px;
+            font-weight: 700;
+            color: #C8DEFF;
+            line-height: 1;
+            min-width: 36px;
+        }
+        .limit-content {}
+        .limit-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0A192F;
+            margin-bottom: 5px;
+        }
+        .limit-text {
+            font-size: 13px;
+            color: #3A4B6A;
+            line-height: 1.55;
+        }
+        .limit-divider {
+            width: 100%;
+            height: 1px;
+            background: #C8DEFF;
+            margin-bottom: 20px;
+        }
+        .contrib-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .contrib-badge {
+            background: #0056B3;
+            color: #FFFFFF;
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            min-width: 36px;
+            text-align: center;
+            margin-top: 2px;
+        }
+        .contrib-content {}
+        .contrib-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0056B3;
+            margin-bottom: 5px;
+        }
+        .contrib-text {
+            font-size: 13px;
+            color: #3A4B6A;
+            line-height: 1.55;
+        }
+        .contrib-divider {
+            width: 100%;
+            height: 1px;
+            background: #C8DEFF;
+            margin-bottom: 20px;
+        }
+        .bottom-note {
+            background: #0A192F;
+            padding: 12px 20px;
+            margin-top: auto;
+        }
+        .bottom-note-text {
+            font-size: 13px;
+            color: #8BA4C0;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .bottom-note-text strong {
+            color: #4A90D9;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="header-band">
+        <div>
+            <div class="slide-number">08 / 10</div>
+            <div class="slide-title">Limitations &amp; <span class="title-accent">Discussion</span></div>
+        </div>
+    </div>
+
+    <div class="body">
+        <!-- Left: Limitations -->
+        <div class="left-col">
+            <div class="col-label">Acknowledged Limitations</div>
+
+            <div class="limit-item">
+                <div class="limit-num">01</div>
+                <div class="limit-content">
+                    <div class="limit-title">Temporal Drift</div>
+                    <div class="limit-text">The dataset is historical. As phishing tactics evolve, the model requires periodic retraining on fresh data to maintain accuracy in a production environment.</div>
+                </div>
+            </div>
+            <div class="limit-divider"></div>
+
+            <div class="limit-item">
+                <div class="limit-num">02</div>
+                <div class="limit-content">
+                    <div class="limit-title">Lexical-Only Scope</div>
+                    <div class="limit-text">Sophisticated domain-spoofing attacks (e.g. <span style="font-family:'DM Mono',monospace;font-size:12px;">paypal.com.verify-login.net</span>) may score lower than expected. Content-based features would improve detection of these cases.</div>
+                </div>
+            </div>
+            <div class="limit-divider"></div>
+
+            <div class="limit-item">
+                <div class="limit-num">03</div>
+                <div class="limit-content">
+                    <div class="limit-title">Dataset Representativeness</div>
+                    <div class="limit-text">The Kaggle dataset may not fully represent current phishing campaigns, particularly mobile-targeted attacks, homograph attacks, or newly emerging URL obfuscation patterns.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Contributions -->
+        <div class="right-col">
+            <div class="col-label contrib">Contributions to Literature</div>
+
+            <div class="contrib-item">
+                <div class="contrib-badge">C1</div>
+                <div class="contrib-content">
+                    <div class="contrib-title">Largest Controlled Comparison</div>
+                    <div class="contrib-text">Empirical comparison of three classifiers on 641,053 URLs — one of the largest purely lexical datasets in reviewed literature, with a standardised evaluation protocol.</div>
+                </div>
+            </div>
+            <div class="contrib-divider"></div>
+
+            <div class="contrib-item">
+                <div class="contrib-badge">C2</div>
+                <div class="contrib-content">
+                    <div class="contrib-title">Explicit FPR Reporting</div>
+                    <div class="contrib-text">False Positive Rate reported for all three models — a metric critical for user experience yet absent from most published studies. RF achieved 5.45% FPR, meeting the &lt;10% non-functional requirement.</div>
+                </div>
+            </div>
+            <div class="contrib-divider"></div>
+
+            <div class="contrib-item">
+                <div class="contrib-badge">C3</div>
+                <div class="contrib-content">
+                    <div class="contrib-title">Open-Source Reproducible Pipeline</div>
+                    <div class="contrib-text">Complete codebase on GitHub with fixed random seeds, modular scripts, and a working web prototype — enabling full replication and extension by future researchers.</div>
+                </div>
+            </div>
+
+            <div class="bottom-note">
+                <div class="bottom-note-text">"Limitations do not undermine the contribution — they define the boundaries of what this study claims and where future work should focus." &nbsp;·&nbsp; <strong>Intellectual honesty is a research strength.</strong></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #F4F7FB;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-band {
+            background: #0A192F;
+            padding: 28px 56px 24px 56px;
+            display: flex;
+            align-items: flex-end;
+            gap: 20px;
+            min-height: 100px;
+        }
+        .slide-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .slide-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #FFFFFF;
+            letter-spacing: -0.3px;
+        }
+        .title-accent {
+            color: #4A90D9;
+        }
+        .body {
+            flex: 1;
+            display: flex;
+            gap: 0;
+        }
+        .left-col {
+            width: 45%;
+            padding: 36px 40px 36px 56px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-right: 2px solid #C8DEFF;
+        }
+        .col-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .stat-block {
+            background: #E6F0FA;
+            border-top: 3px solid #0056B3;
+            padding: 16px 20px;
+        }
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0A192F;
+            font-family: 'DM Mono', monospace;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: #1A2B4A;
+            margin-top: 6px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .right-col {
+            width: 55%;
+            padding: 36px 56px 36px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .rq-box {
+            background: #0A192F;
+            padding: 24px 28px;
+        }
+        .rq-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .rq-text {
+            font-size: 15px;
+            color: #FFFFFF;
+            font-style: italic;
+            line-height: 1.65;
+            font-weight: 500;
+        }
+        .aim-section {}
+        .aim-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0056B3;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+        .aim-text {
+            font-size: 15px;
+            color: #1A2B4A;
+            line-height: 1.65;
+        }
+        .problem-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-top: 4px;
+        }
+        .problem-dot {
+            width: 8px;
+            height: 8px;
+            min-width: 8px;
+            background: #0056B3;
+            margin-top: 7px;
+        }
+        .problem-text {
+            font-size: 14px;
+            color: #1A2B4A;
+            line-height: 1.55;
+        }
+        .problem-text strong {
+            color: #0A192F;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="header-band">
+        <div>
+            <div class="slide-number">02 / 10</div>
+            <div class="slide-title">Research Aim &amp; <span class="title-accent">Background</span></div>
+        </div>
+    </div>
+
+    <div class="body">
+        <!-- Left: Stats -->
+        <div class="left-col">
+            <div class="col-label">Scale of the Problem</div>
+
+            <div class="stat-block">
+                <div class="stat-number">651,191</div>
+                <div class="stat-label">URLs analysed in this study — one of the largest lexical-only datasets in published research</div>
+            </div>
+
+            <div class="stat-block">
+                <div class="stat-number">#1</div>
+                <div class="stat-label">Phishing remains the most prevalent cyber threat — APWG recorded record attack volumes in 2022 (APWG, 2024)</div>
+            </div>
+
+            <div class="stat-block">
+                <div class="stat-number">0ms</div>
+                <div class="stat-label">Time blacklists take to detect a <em>zero-hour</em> phishing URL — they simply cannot. ML can.</div>
+            </div>
+        </div>
+
+        <!-- Right: Research Question + Aim -->
+        <div class="right-col">
+            <div class="rq-box">
+                <div class="rq-label">Research Question</div>
+                <div class="rq-text">"Can machine learning models using only lexical URL features detect phishing URLs accurately enough for real-world deployment, and which classifier performs best?"</div>
+            </div>
+
+            <div class="aim-section">
+                <div class="aim-title">Research Aim</div>
+                <div class="aim-text">To design, implement, and evaluate a lexical-feature-based machine learning pipeline that classifies URLs as benign or malicious in real time — without external API calls, DNS lookups, or page content analysis.</div>
+            </div>
+
+            <div>
+                <div class="aim-title" style="margin-bottom:12px;">Why This Matters</div>
+                <div class="problem-row">
+                    <div class="problem-dot"></div>
+                    <div class="problem-text"><strong>Blacklists fail</strong> on zero-hour attacks — new URLs not yet catalogued</div>
+                </div>
+                <div class="problem-row">
+                    <div class="problem-dot"></div>
+                    <div class="problem-text"><strong>Content-based ML</strong> requires page loading — too slow for real-time use</div>
+                </div>
+                <div class="problem-row">
+                    <div class="problem-dot"></div>
+                    <div class="problem-text"><strong>Lexical-only ML</strong> analyses the URL string alone — instant, private, scalable</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

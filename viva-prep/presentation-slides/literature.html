@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #F4F7FB;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-band {
+            background: #0A192F;
+            padding: 28px 56px 24px 56px;
+            min-height: 100px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .slide-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .slide-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+        .title-accent { color: #4A90D9; }
+        .body {
+            flex: 1;
+            padding: 32px 56px 28px 56px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .three-cols {
+            display: flex;
+            gap: 0;
+            border: 2px solid #C8DEFF;
+        }
+        .approach-col {
+            flex: 1;
+            padding: 20px 24px;
+            border-right: 2px solid #C8DEFF;
+        }
+        .approach-col:last-child { border-right: none; }
+        .approach-col.highlight {
+            background: #0A192F;
+        }
+        .approach-header {
+            font-size: 14px;
+            font-weight: 800;
+            color: #0A192F;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .approach-col.highlight .approach-header {
+            color: #4A90D9;
+        }
+        .gen-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+        .approach-col.highlight .gen-tag { color: #8BA4C0; }
+        .approach-row {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .dot-pos { width: 6px; height: 6px; min-width: 6px; background: #0056B3; margin-top: 7px; }
+        .dot-neg { width: 6px; height: 6px; min-width: 6px; background: #C0392B; margin-top: 7px; }
+        .dot-pos-w { width: 6px; height: 6px; min-width: 6px; background: #4A90D9; margin-top: 7px; }
+        .approach-text {
+            font-size: 13px;
+            color: #1A2B4A;
+            line-height: 1.5;
+        }
+        .approach-col.highlight .approach-text { color: #C8DEFF; }
+        .example-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: #0056B3;
+            margin-top: 12px;
+        }
+        .approach-col.highlight .example-tag { color: #4A90D9; }
+        .gap-section {
+            background: #E6F0FA;
+            border-top: 3px solid #0056B3;
+            padding: 18px 24px;
+        }
+        .gap-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-family: 'DM Mono', monospace;
+        }
+        .gap-items {
+            display: flex;
+            gap: 40px;
+        }
+        .gap-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            flex: 1;
+        }
+        .gap-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: #0056B3;
+            line-height: 1;
+            min-width: 28px;
+        }
+        .gap-text {
+            font-size: 13px;
+            color: #1A2B4A;
+            line-height: 1.5;
+        }
+        .gap-text strong { color: #0A192F; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="header-band">
+        <div>
+            <div class="slide-number">03 / 10</div>
+            <div class="slide-title">Literature Overview &amp; <span class="title-accent">Research Gap</span></div>
+        </div>
+    </div>
+
+    <div class="body">
+        <div class="section-label">Three Generations of Phishing Detection</div>
+
+        <div class="three-cols">
+            <!-- Gen 1: Blacklisting -->
+            <div class="approach-col">
+                <div class="gen-tag">GENERATION 1</div>
+                <div class="approach-header">Blacklisting</div>
+                <div class="approach-row"><div class="dot-pos"></div><div class="approach-text">Fast lookup — milliseconds</div></div>
+                <div class="approach-row"><div class="dot-pos"></div><div class="approach-text">Simple to implement</div></div>
+                <div class="approach-row"><div class="dot-neg"></div><div class="approach-text">Fails on zero-hour attacks</div></div>
+                <div class="approach-row"><div class="dot-neg"></div><div class="approach-text">Requires constant manual updates</div></div>
+                <div class="approach-row"><div class="dot-neg"></div><div class="approach-text">Reactive, not predictive</div></div>
+                <div class="example-tag">e.g. Google Safe Browsing</div>
+            </div>
+
+            <!-- Gen 2: Content-Based ML -->
+            <div class="approach-col">
+                <div class="gen-tag">GENERATION 2</div>
+                <div class="approach-header">Content-Based ML</div>
+                <div class="approach-row"><div class="dot-pos"></div><div class="approach-text">High accuracy possible</div></div>
+                <div class="approach-row"><div class="dot-pos"></div><div class="approach-text">Detects new URLs</div></div>
+                <div class="approach-row"><div class="dot-neg"></div><div class="approach-text">Requires page loading — slow</div></div>
+                <div class="approach-row"><div class="dot-neg"></div><div class="approach-text">DNS + WHOIS + HTML needed</div></div>
+                <div class="approach-row"><div class="dot-neg"></div><div class="approach-text">Privacy concerns; API costs</div></div>
+                <div class="example-tag">e.g. Rao &amp; Pais (2020)</div>
+            </div>
+
+            <!-- Gen 3: Lexical-Only ML (THIS STUDY) -->
+            <div class="approach-col highlight">
+                <div class="gen-tag">THIS STUDY — GENERATION 3</div>
+                <div class="approach-header">Lexical-Only ML</div>
+                <div class="approach-row"><div class="dot-pos-w"></div><div class="approach-text">Real-time — under 1ms per URL</div></div>
+                <div class="approach-row"><div class="dot-pos-w"></div><div class="approach-text">No external API calls needed</div></div>
+                <div class="approach-row"><div class="dot-pos-w"></div><div class="approach-text">Privacy-preserving</div></div>
+                <div class="approach-row"><div class="dot-pos-w"></div><div class="approach-text">Detects zero-hour attacks</div></div>
+                <div class="approach-row"><div class="dot-pos-w"></div><div class="approach-text">Fully reproducible pipeline</div></div>
+                <div class="example-tag">e.g. Sahingoz et al. (2019) + this work</div>
+            </div>
+        </div>
+
+        <!-- Research Gap -->
+        <div class="gap-section">
+            <div class="gap-label">Research Gap Identified — Three Missing Elements in Literature</div>
+            <div class="gap-items">
+                <div class="gap-item">
+                    <div class="gap-num">01</div>
+                    <div class="gap-text"><strong>No controlled comparison</strong> of purely lexical classifiers on a large-scale modern dataset (&gt;600K URLs)</div>
+                </div>
+                <div class="gap-item">
+                    <div class="gap-num">02</div>
+                    <div class="gap-text"><strong>FPR rarely reported</strong> — critical for user experience, yet absent from most published studies</div>
+                </div>
+                <div class="gap-item">
+                    <div class="gap-num">03</div>
+                    <div class="gap-text"><strong>No open-source reproducible pipeline</strong> with working web prototype demonstrating real-world viability</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

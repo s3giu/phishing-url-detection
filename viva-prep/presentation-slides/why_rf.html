@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #F4F7FB;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-band {
+            background: #0A192F;
+            padding: 28px 56px 24px 56px;
+            min-height: 100px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .slide-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .slide-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+        .title-accent { color: #4A90D9; }
+        .body {
+            flex: 1;
+            display: flex;
+            gap: 0;
+        }
+        .left-col {
+            width: 55%;
+            padding: 32px 40px 32px 56px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            border-right: 2px solid #C8DEFF;
+        }
+        .col-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .reason-block {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            background: #E6F0FA;
+            border-top: 3px solid #0056B3;
+            padding: 16px 20px;
+        }
+        .reason-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 28px;
+            font-weight: 700;
+            color: #0056B3;
+            line-height: 1;
+            min-width: 36px;
+        }
+        .reason-content {}
+        .reason-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #0A192F;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+        .reason-text {
+            font-size: 13px;
+            color: #1A2B4A;
+            line-height: 1.55;
+        }
+        .reason-text strong { color: #0056B3; font-weight: 700; }
+        .right-col {
+            width: 45%;
+            padding: 32px 56px 32px 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .chart-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .chart-wrap {
+            height: 300px;
+        }
+        .key-stat {
+            background: #0A192F;
+            padding: 18px 22px;
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .key-stat-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 36px;
+            font-weight: 700;
+            color: #4A90D9;
+            line-height: 1;
+        }
+        .key-stat-text {
+            font-size: 13px;
+            color: #C8DEFF;
+            line-height: 1.5;
+        }
+        .key-stat-text strong { color: #FFFFFF; }
+        .divider-v {
+            width: 2px;
+            background: #1E3A5F;
+            align-self: stretch;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="header-band">
+        <div>
+            <div class="slide-number">07 / 10</div>
+            <div class="slide-title">Why <span class="title-accent">Random Forest</span> Won</div>
+        </div>
+    </div>
+
+    <div class="body">
+        <!-- Left: Three Reasons -->
+        <div class="left-col">
+            <div class="col-label">Three Reasons for Superiority</div>
+
+            <div class="reason-block">
+                <div class="reason-num">01</div>
+                <div class="reason-content">
+                    <div class="reason-title">Non-Linearity of Phishing Patterns</div>
+                    <div class="reason-text">URL features interact in complex, non-linear ways. A long URL with <strong>high entropy AND many dots</strong> is far more suspicious than any single feature alone. Random Forest captures these interactions; linear models cannot.</div>
+                </div>
+            </div>
+
+            <div class="reason-block">
+                <div class="reason-num">02</div>
+                <div class="reason-content">
+                    <div class="reason-title">Ensemble Robustness — 200 Trees</div>
+                    <div class="reason-text"><strong>200 decision trees vote</strong> on each URL. No single tree dominates. This reduces variance and handles the diversity of phishing tactics — from IP-based attacks to domain-spoofing to obfuscated paths.</div>
+                </div>
+            </div>
+
+            <div class="reason-block">
+                <div class="reason-num">03</div>
+                <div class="reason-content">
+                    <div class="reason-title">Class Imbalance Handling</div>
+                    <div class="reason-text">With <strong>class_weight='balanced'</strong>, RF adjusts for the 66/34 class split automatically. Linear models achieved only ~50% Recall — missing half of all phishing URLs. RF achieved <strong>93% Recall</strong>.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Chart + Key Stat -->
+        <div class="right-col">
+            <div class="chart-label">Recall Comparison — The Critical Metric</div>
+            <div class="chart-wrap">
+                <canvas id="recallChart"></canvas>
+            </div>
+
+            <div class="key-stat">
+                <div class="key-stat-num">+43%</div>
+                <div class="divider-v"></div>
+                <div class="key-stat-text"><strong>Recall advantage</strong> of Random Forest over linear models — meaning RF catches 43% more phishing URLs that LR and SVM would miss entirely</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const ctx = document.getElementById('recallChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Logistic\nRegression', 'Random\nForest', 'SVM\n(LinearSVC)'],
+        datasets: [{
+            label: 'Recall',
+            data: [50.08, 93.00, 49.84],
+            backgroundColor: ['#8BA4C0', '#0056B3', '#8BA4C0'],
+            borderWidth: 0,
+            barThickness: 64
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: function(ctx) { return ctx.parsed.y.toFixed(2) + '%'; }
+                }
+            }
+        },
+        scales: {
+            y: {
+                min: 0,
+                max: 100,
+                ticks: {
+                    callback: v => v + '%',
+                    font: { family: 'DM Mono', size: 12 },
+                    color: '#1A2B4A'
+                },
+                grid: { color: '#C8DEFF' }
+            },
+            x: {
+                ticks: {
+                    font: { family: 'Space Grotesk', size: 12, weight: '600' },
+                    color: '#1A2B4A'
+                },
+                grid: { display: false }
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>

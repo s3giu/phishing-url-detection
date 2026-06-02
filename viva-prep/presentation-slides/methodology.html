@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #F4F7FB;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-band {
+            background: #0A192F;
+            padding: 28px 56px 24px 56px;
+            min-height: 100px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .slide-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .slide-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+        .title-accent { color: #4A90D9; }
+        .body {
+            flex: 1;
+            display: flex;
+            gap: 0;
+        }
+        /* LEFT: CRISP-DM pipeline */
+        .left-col {
+            width: 50%;
+            padding: 28px 36px 28px 56px;
+            border-right: 2px solid #C8DEFF;
+            display: flex;
+            flex-direction: column;
+        }
+        .col-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #0056B3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .phase-row {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+        }
+        .phase-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 32px;
+            min-width: 32px;
+        }
+        .phase-dot {
+            width: 14px;
+            height: 14px;
+            background: #0056B3;
+            border: 2px solid #0A192F;
+            margin-top: 14px;
+        }
+        .phase-line {
+            width: 2px;
+            flex: 1;
+            background: #C8DEFF;
+            margin-left: 6px;
+        }
+        .phase-row:last-child .phase-line { display: none; }
+        .phase-content {
+            flex: 1;
+            background: #E6F0FA;
+            border-top: 2px solid #C8DEFF;
+            padding: 10px 16px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .phase-row:nth-child(3) .phase-content { background: #C8DEFF; border-top-color: #0056B3; }
+        .phase-row:nth-child(4) .phase-content { background: #C8DEFF; border-top-color: #0056B3; }
+        .phase-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0A192F;
+        }
+        .phase-detail {
+            font-size: 12px;
+            color: #1A2B4A;
+            margin-top: 2px;
+            font-family: 'DM Mono', monospace;
+        }
+        .sprint-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: #0056B3;
+            background: #FFFFFF;
+            border: 1px solid #0056B3;
+            padding: 3px 8px;
+            white-space: nowrap;
+        }
+        /* RIGHT: Philosophy + Dataset */
+        .right-col {
+            width: 50%;
+            padding: 28px 56px 28px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .philosophy-grid {
+            display: flex;
+            gap: 10px;
+        }
+        .phil-block {
+            flex: 1;
+            background: #0A192F;
+            padding: 16px 14px;
+        }
+        .phil-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: #4A90D9;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .phil-value {
+            font-size: 15px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+        .phil-desc {
+            font-size: 12px;
+            color: #8BA4C0;
+            line-height: 1.45;
+        }
+        .dataset-section {
+            border-top: 2px solid #C8DEFF;
+            padding-top: 16px;
+        }
+        .dataset-grid {
+            display: flex;
+            gap: 0;
+            border: 2px solid #C8DEFF;
+        }
+        .ds-cell {
+            flex: 1;
+            padding: 14px 16px;
+            border-right: 2px solid #C8DEFF;
+        }
+        .ds-cell:last-child { border-right: none; }
+        .ds-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: #0056B3;
+            line-height: 1;
+        }
+        .ds-label {
+            font-size: 12px;
+            color: #1A2B4A;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+        .agile-note {
+            background: #E6F0FA;
+            border-top: 3px solid #0056B3;
+            padding: 12px 16px;
+        }
+        .agile-note-text {
+            font-size: 13px;
+            color: #1A2B4A;
+            line-height: 1.55;
+        }
+        .agile-note-text strong { color: #0A192F; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="header-band">
+        <div>
+            <div class="slide-number">04 / 10</div>
+            <div class="slide-title"><span class="title-accent">Methodology</span> — CRISP-DM + Agile Scrum</div>
+        </div>
+    </div>
+
+    <div class="body">
+        <!-- Left: CRISP-DM Pipeline -->
+        <div class="left-col">
+            <div class="col-label">CRISP-DM Phases → Sprint Mapping</div>
+            <div class="pipeline">
+                <div class="phase-row">
+                    <div class="phase-connector">
+                        <div class="phase-dot"></div>
+                        <div class="phase-line"></div>
+                    </div>
+                    <div class="phase-content">
+                        <div>
+                            <div class="phase-name">Business Understanding</div>
+                            <div class="phase-detail">Project setup, tools, proposal writing</div>
+                        </div>
+                        <div class="sprint-badge">Sprint 1</div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-connector">
+                        <div class="phase-dot"></div>
+                        <div class="phase-line"></div>
+                    </div>
+                    <div class="phase-content">
+                        <div>
+                            <div class="phase-name">Data Understanding</div>
+                            <div class="phase-detail">EDA, class distribution, visualisations</div>
+                        </div>
+                        <div class="sprint-badge">Sprint 2</div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-connector">
+                        <div class="phase-dot" style="background:#0056B3;"></div>
+                        <div class="phase-line"></div>
+                    </div>
+                    <div class="phase-content">
+                        <div>
+                            <div class="phase-name">Data Preparation</div>
+                            <div class="phase-detail">Cleaning, deduplication, feature engineering</div>
+                        </div>
+                        <div class="sprint-badge">Sprints 3–4</div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-connector">
+                        <div class="phase-dot" style="background:#0056B3;"></div>
+                        <div class="phase-line"></div>
+                    </div>
+                    <div class="phase-content">
+                        <div>
+                            <div class="phase-name">Modelling</div>
+                            <div class="phase-detail">Logistic Regression, Random Forest, SVM</div>
+                        </div>
+                        <div class="sprint-badge">Sprints 5–7</div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-connector">
+                        <div class="phase-dot"></div>
+                        <div class="phase-line"></div>
+                    </div>
+                    <div class="phase-content">
+                        <div>
+                            <div class="phase-name">Evaluation</div>
+                            <div class="phase-detail">Cross-validation, ANOVA, final comparison</div>
+                        </div>
+                        <div class="sprint-badge">Sprints 8–9</div>
+                    </div>
+                </div>
+                <div class="phase-row">
+                    <div class="phase-connector">
+                        <div class="phase-dot"></div>
+                        <div class="phase-line"></div>
+                    </div>
+                    <div class="phase-content">
+                        <div>
+                            <div class="phase-name">Deployment</div>
+                            <div class="phase-detail">PhishGuard web prototype (React + ML)</div>
+                        </div>
+                        <div class="sprint-badge">Sprint 10+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Philosophy + Dataset -->
+        <div class="right-col">
+            <div class="col-label">Research Philosophy</div>
+            <div class="philosophy-grid">
+                <div class="phil-block">
+                    <div class="phil-label">Philosophy</div>
+                    <div class="phil-value">Positivist</div>
+                    <div class="phil-desc">Knowledge from observable, measurable, reproducible phenomena</div>
+                </div>
+                <div class="phil-block">
+                    <div class="phil-label">Approach</div>
+                    <div class="phil-value">Deductive</div>
+                    <div class="phil-desc">Hypotheses from literature tested empirically on real data</div>
+                </div>
+                <div class="phil-block">
+                    <div class="phil-label">Strategy</div>
+                    <div class="phil-value">Experimental</div>
+                    <div class="phil-desc">Controlled comparison of 3 classifiers under identical conditions</div>
+                </div>
+            </div>
+
+            <div class="dataset-section">
+                <div class="col-label" style="margin-bottom:12px;">Dataset — Malicious URLs (Kaggle, Siddhartha 2024)</div>
+                <div class="dataset-grid">
+                    <div class="ds-cell">
+                        <div class="ds-num">641,053</div>
+                        <div class="ds-label">Unique URLs after cleaning</div>
+                    </div>
+                    <div class="ds-cell">
+                        <div class="ds-num">80/20</div>
+                        <div class="ds-label">Stratified train/test split</div>
+                    </div>
+                    <div class="ds-cell">
+                        <div class="ds-num">66.7%</div>
+                        <div class="ds-label">Benign class proportion</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agile-note">
+                <div class="agile-note-text">
+                    <strong>Why CRISP-DM + Agile?</strong> CRISP-DM is the industry-standard data mining framework. Mapping each phase to a 2-week Agile sprint provided structured iteration with retrospectives, ensuring each decision was documented and justified before proceeding.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
