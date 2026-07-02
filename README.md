@@ -5,7 +5,7 @@
 **Institution:** Newcastle College Group (University of Northumbria)  
 **Supervisor:** Oti Edema  
 **Timeline:** November 2025 – May 2026  
-**Status:** ✅ Sprints 1–9 Complete | 🔄 Sprint 10 (Dissertation Write-up) In Progress
+**Status:** ✅ All Sprints Complete — Module Submitted & Viva Ready
 
 ---
 
@@ -81,7 +81,7 @@ Sprint 6  → Modelling                (Random Forest)
 Sprint 7  → Modelling                (SVM / LinearSVC)
 Sprint 8  → Evaluation               (5-fold cross-validation, ANOVA feature selection)
 Sprint 9  → Evaluation               (final comparison, combined ROC curves, heatmap)
-Sprint 10+→ Deployment               (dissertation write-up, submission)
+Sprint 10 → Deployment               (dissertation write-up, submission, viva preparation)
 ```
 
 ### Feature Engineering (Sprint 4)
@@ -460,6 +460,29 @@ All 10 features are statistically significant (p < 0.05). The top 3 features (`d
 
 ---
 
+### Sprint 10 — Deployment: Dissertation Write-up, Submission & Viva ✅
+**CRISP-DM Phase:** Deployment  
+**Dates:** April – July 2026  
+**Deliverables:**
+- Full dissertation written (6,996 words) covering all 6 chapters, bibliography, and 6 appendices
+- Cover page completed with all required fields (student name, programme, module, supervisor, due date)
+- AI Declaration and Areas for Development table filled
+- Appendix F added: 6 PhishGuard screenshots with academic explanations
+- Stakeholder Analysis (Section 3.3) and Work Breakdown Structure added
+- Dissertation formatted: Arial/Calibri 12pt, double-spaced, Harvard referencing
+- PhishGuard web prototype deployed at https://phishguardapp.manus.space
+- Viva presentation prepared (10 slides, speaker notes, Q&A guide)
+- All materials pushed to this GitHub repository under `dissertation/` and `viva-prep/`
+- **Dissertation submitted: 23 May 2026**
+- **Viva examination: July 2026**
+
+**Repository folders:**
+- `dissertation/01_submission/` — Final DOCX and PDF submission
+- `dissertation/02_screenshots/` — 6 Appendix F figures
+- `viva-prep/` — PPT, speaker notes, Q&A guide
+
+---
+
 ## Results Summary
 
 | Model | Accuracy | F1-Score | FPR | ROC AUC |
@@ -494,9 +517,10 @@ All 10 features are statistically significant (p < 0.05). The top 3 features (`d
 
 ---
 
-**Last Updated:** 25 March 2026  
+**Last Updated:** July 2026  
 **GitHub:** https://github.com/s3giu/phishing-url-detection  
-**Trello:** https://trello.com/b/YbG9606p/phishing
+**Trello:** https://trello.com/b/YbG9606p/phishing  
+**Live App:** https://phishguardapp.manus.space
 
 ---
 
