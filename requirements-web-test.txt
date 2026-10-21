@@ -1,0 +1,2 @@
+# Optional only: browser smoke tests. The MVP itself has no package dependencies.
+playwright>=1.49,<2
