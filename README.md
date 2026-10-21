@@ -1,8 +1,48 @@
 # Phishing URL Detection – CMP600 Dissertation
 
+## Check Before You Click — browser MVP
+
+A mobile-friendly, private link checker is now in **`web/`**. Paste an HTTP(S) link to see its canonical **starting hostname**, understandable structural warning signs, and an independent verification step. Try the included ordinary, misleading-username, and shortened-link examples.
+
+### Run the app
+
+From the repository root, with Python 3 and Node.js 20+ installed:
+
+```bash
+npm start
+# Open http://localhost:8000
+```
+
+No npm install, dataset, trained model, API key, or research dependencies are needed to use the app. Alternatively run `python3 -m http.server 8000 --bind 127.0.0.1 --directory web`. Serve **only `web/`**, not the repository root. The built-in server is for development, not production hosting; the static web files can be hosted separately over HTTPS.
+
+### Checks
+
+```bash
+npm run check                       # JavaScript syntax + analyzer unit tests
+pip install -r requirements-web-test.txt
+python -m playwright install chromium  # If no local Chromium is installed
+python tests/browser_smoke.py        # Real Chromium, including 320–1280px layouts
+python tests/feature_parity.py       # Requires pandas/numpy from requirements.txt
+git diff --check
+```
+
+The browser suite starts its own temporary loopback server and checks validation, actual-host display, HTTPS/HTTP/port labels, examples, stale-result clearing, no submitted-link requests, no storage, and no HTML injection. Set `CHROMIUM_EXECUTABLE` for a custom browser location. Feature parity checks all 10 JavaScript lexical features against `src/features/lexical_features.py` on normalized fixtures, including Unicode, credentials, ports, and IPv6.
+
+### Boundaries that matter
+
+- **Not a safety verdict:** no “safe” label, risk percentage, automatic blocking, or click-through to the submitted link.
+- **No link visits:** analysis stays in the browser. There is no URL API, redirect expansion, page inspection, DNS lookup, reputation feed, analytics, or saved history. Static app files are loaded from the hosting server; pasted URLs are not sent to it. A restrictive Content Security Policy disables network connections and form submissions.
+- **Starting host, not final destination:** redirects and shorteners can lead elsewhere. No claim is made about site ownership or the registrable domain; the complete hostname is displayed.
+- **Research-informed, not model-powered:** the MVP ports the existing 10 lexical-feature formulas and adds explainable heuristics. The repository has training scripts but no tracked trained model. Its reported Random Forest **5.45% false-positive rate** is a research-test-set result, **not** an evaluated error rate for this MVP. No new accuracy claim is made.
+- **Conservative input:** accepts HTTP(S) domains/IPs and schemeless hosts (assuming HTTPS, with a notice), rejects whitespace/control characters/backslashes and other schemes, and limits input to 8,192 characters. These checks are not an exhaustive phishing detector. Internationalized domains and other warning signs can be legitimate.
+
+Implementation: `web/index.html`, `web/styles.css`, `web/app.js`, `web/analyzer.js`. Tests: `tests/analyzer.test.js`, `tests/browser_smoke.py`, `tests/feature_parity.py`. The original research pipeline below is unchanged.
+
+---
+
 **Author:** Sergiu Ionut Pascaru (Student ID: 2310-111729)  
 **Module:** CMP600 – Dissertation  
-**Institution:** Newcastle College Group (University of Northumbria)  
+**Institution:** Newcastle College Group (University of Northumbria)
 **Supervisor:** Oti Edema  
 **Timeline:** November 2025 – May 2026  
 **Status:** ✅ All Sprints Complete — Module Submitted & Viva Ready

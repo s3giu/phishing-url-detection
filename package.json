@@ -1,0 +1,13 @@
+{
+  "name": "phishguard-check-before-you-click",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Private browser-only lexical link checker; no safety verdicts or URL fetching.",
+  "scripts": {
+    "start": "python3 -m http.server 8000 --bind 0.0.0.0 --directory web",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check web/analyzer.js && node --check web/app.js && node --test tests/*.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

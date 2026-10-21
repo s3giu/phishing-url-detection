@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>Check Before You Click · PhishGuard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="masthead"><a class="brand" href="./" aria-label="PhishGuard home"><span class="brand-mark" aria-hidden="true">P</span> PhishGuard <span class="tag">LINK CHECKER</span></a><span class="private-label">Private by design</span></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">A SMALL PAUSE. A BETTER DECISION.</p>
+      <h1 id="page-title">Check before<br>you click<span class="accent">.</span></h1>
+      <p class="lede">A familiar name in a link doesn’t always mean a familiar destination. See where a link starts, understand the clues, and choose your next step.</p>
+    </section>
+    <section class="checker" aria-labelledby="check-title">
+      <div class="card-heading"><h2 id="check-title">What’s behind this link?</h2><span class="step">01 / CHECK</span></div>
+      <form id="check-form" novalidate>
+        <label for="url-input">Paste a website link</label>
+        <textarea id="url-input" name="url" rows="3" maxlength="8192" placeholder="https://example.com/a-link-you-received" spellcheck="false" autocapitalize="none" autocomplete="off" autocorrect="off" aria-describedby="input-help input-error"></textarea>
+        <p id="input-help" class="help">The check happens in this browser. We don’t visit the link, send it to a server, or keep a history.</p>
+        <p id="input-error" class="error" role="alert" hidden></p>
+        <div class="form-actions"><button type="submit" class="primary">Check this link <span aria-hidden="true">→</span></button><button type="button" id="clear-button" class="quiet">Clear</button></div>
+      </form>
+      <div class="examples"><span>Try an example</span><button type="button" data-example="https://example.com/about">Ordinary link</button><button type="button" data-example="https://accounts.example.com@signin.example.net/verify">Misleading name</button><button type="button" data-example="https://bit.ly/example">Shortened link</button></div>
+      <p class="example-note">Examples are illustrative, not live reputation checks.</p>
+    </section>
+    <section id="results" class="results" aria-labelledby="result-title" tabindex="-1" hidden>
+      <div class="result-heading"><p class="eyebrow">YOUR LINK, EXPLAINED</p><h2 id="result-title"></h2><p id="result-summary"></p></div>
+      <div class="destination-card"><span class="label">ACTUAL STARTING HOSTNAME</span><p id="hostname" dir="ltr"></p><p class="help">This is the host the supplied link points to first, not a verified owner or final destination. A redirect could take you somewhere else.</p><dl class="connection"><div><dt>Connection</dt><dd id="connection"></dd></div><div><dt>Port</dt><dd id="port"></dd></div></dl></div>
+      <section class="findings-section" aria-labelledby="findings-title"><h3 id="findings-title">What to notice</h3><ul id="findings"></ul></section>
+      <aside class="next-step" aria-labelledby="verify-title"><span class="label">02 / VERIFY INDEPENDENTLY</span><h3 id="verify-title"></h3><p id="verification"></p><p>Don’t use contact details from the message you’re checking. If it asks for money, passwords, or a verification code, pause first.</p></aside>
+      <details><summary>What this check can—and can’t—tell you</summary><p>This is a lexical check: it looks at the text and structure of the link. It does not open the page, follow redirects, check reputation lists, verify ownership, or determine whether the content is malicious. HTTPS protects a connection; it does not prove a site is trustworthy.</p><p>Built on this project’s lexical-feature research, not a running machine-learning model. The README reports a 5.45% false-positive rate for its Random Forest on its research test set; that is not a measured error rate for this checker. Both false alarms and missed threats are possible.</p><h4>Lexical details</h4><dl id="features" class="features"></dl></details>
+    </section>
+    <section class="principles" aria-label="How to use this checker"><article><span class="number">01</span><h3>Read the destination</h3><p>The name in the path or before an @ can distract from the actual hostname.</p></article><article><span class="number">02</span><h3>Notice, don’t assume</h3><p>Warning signs are clues, not proof. A clean-looking link can still be harmful.</p></article><article><span class="number">03</span><h3>Take another route</h3><p>Use the organisation’s official app, a saved bookmark, or a website address you already know.</p></article></section>
+  </main>
+  <footer><span>PhishGuard · Check Before You Click</span><span>A second look, not a safety guarantee.</span></footer>
+</body>
+</html>
